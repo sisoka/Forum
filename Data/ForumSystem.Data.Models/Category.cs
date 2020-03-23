@@ -11,6 +11,7 @@ namespace ForumSystem.Data.Models
         {
             this.Posts = new HashSet<Post>();
         }
+
         public string Name { get; set; }
 
         public string Title { get; set; }
