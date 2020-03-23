@@ -202,10 +202,7 @@ namespace ForumSystem.Data.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -214,7 +211,7 @@ namespace ForumSystem.Data.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -247,10 +244,7 @@ namespace ForumSystem.Data.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -259,7 +253,7 @@ namespace ForumSystem.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -410,7 +404,7 @@ namespace ForumSystem.Data.Migrations
 
                     b.HasOne("ForumSystem.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ForumSystem.Data.Models.Post", b =>
@@ -423,7 +417,7 @@ namespace ForumSystem.Data.Migrations
 
                     b.HasOne("ForumSystem.Data.Models.ApplicationUser", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
