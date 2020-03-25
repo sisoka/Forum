@@ -1,0 +1,34 @@
+﻿@using ForumSystem.Common
+@model ForumSystem.Web.ViewModels.Categories.CategoryViewModel
+@{
+    this.ViewData["Title"] = Model.Title;
+}
+
+<h1 class="display-3">@this.ViewData["Title"]</h1>
+<div class="alert alert-info">
+    @Model.Description
+</div>
+@foreach (var post in Model.Posts)
+{
+    <div class="media-body">
+        <h4 class="media-heading">@post.Title</h4>
+        <p>@post.Content</p>
+        <ul class="list-inline list-styled text-right">
+            <li list-inline-item>
+                <i class="fas fa-user-edit">
+                    By @post.UserUserName
+                </i>
+            </li>
+            <li list-inline-item>
+                <i class="fas fa-clock">
+                    @post.CreatedOn
+                </i>
+            </li>
+            <li list-inline-item>
+                <i class="fas fa-comment-dots">
+                    @post.CommentsCount comments
+                </i>
+            </li>
+        </ul>
+    </div>
+}
