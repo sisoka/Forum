@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
     using ForumSystem.Data.Common.Repositories;
     using ForumSystem.Data.Models;
+    using ForumSystem.Services.Mapping;
 
     public class PostsService : IPostsService
     {
@@ -30,6 +32,13 @@
             await this.postsRepository.AddAsync(post);
             await this.postsRepository.SaveChangesAsync();
             return post.Id;
+        }
+
+        public T GetPostById<T>(int id)
+        {
+            var post = this.postsRepository.All().Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+            return post;
         }
     }
 }

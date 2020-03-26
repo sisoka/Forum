@@ -8,5 +8,7 @@ namespace ForumSystem.Services.Data
     public interface IPostsService
     {
         Task<int> CreateAsync(string title, string content, int categoryId, string userId);
+
+        T GetPostById<T>(int id);
     }
 }

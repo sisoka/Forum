@@ -30,7 +30,8 @@ namespace ForumSystem.Web.Controllers
 
         public IActionResult ById(int id)
         {
-            return this.View();
+            var viewModel = this.postsService.GetPostById<PostViewModel>(id);
+            return this.View(viewModel);
         }
 
         [Authorize]
